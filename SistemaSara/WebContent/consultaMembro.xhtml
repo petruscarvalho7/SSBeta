@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+
+
+<ui:decorate template="template.xhtml">
+        <ui:define name="conteudo">
+        
+<!-- PanelGrid para pesquisa do cliente -->
+			<h:form id="fmMembro">
+			<h:panelGrid columns="5" width="200">
+					<p:outputLabel value="Pesquisar:  " />
+					<p:selectOneMenu value="#{beanmembro.campo}">
+						<f:selectItem itemLabel="Nome do Membro" itemValue="nome" />
+						<f:selectItem itemLabel="Ref do Membro" itemValue="objref" />
+						<f:selectItem itemLabel="Nome discipulador" itemValue="discipulador" />
+						<f:selectItem itemLabel="CPF" itemValue="cpf" />
+					</p:selectOneMenu>
+					<p:selectOneMenu value="#{beanmembro.tipoConsulta}">
+						<f:selectItem itemLabel="Que contenha..." itemValue="0" />
+						<f:selectItem itemLabel="Começando com..." itemValue="3" />
+						<f:selectItem itemLabel="Terminando com..." itemValue="2" />
+					</p:selectOneMenu>
+					<p:inputText value="#{beanmembro.pesMembro}" />
+					<p:commandButton icon="ui-icon-search"
+						actionListener="#{beanmembro.findMembro}" update="fmMembro" />
+				</h:panelGrid>
+				<p:dataTable id="tdmembro" value="#{beanmembro.membroList}" var="membro" emptyMessage="Não foram encontrados registros ou a tabela ainda não foi carregada">
+					<p:column headerText="Ref">
+					<h:outputText value="#{membro.objref}"/>
+					</p:column>
+					<p:column headerText="Nome">
+					<h:outputText value="#{membro.nome}"/>
+					</p:column>
+					<p:column headerText="Data Nascimento">
+					<h:outputText value="#{membro.dataNascimento}"/>
+					</p:column>
+					<p:column headerText="CPF">
+					<h:outputText value="#{membro.cpf}"/>
+					</p:column>
+					<p:column headerText="Discipulador">
+					<h:outputText value="#{membro.discipulador}"/>
+					</p:column>
+					<p:column headerText="Opções" >
+						<h:commandLink action="#{beanmembro.editar}">
+							<h:graphicImage library="img" name="editar.png" style="border:0"/>
+							<f:setPropertyActionListener target="#{beanmembro.membro}" value="#{membro}" />
+						</h:commandLink>
+						<h:commandLink action="#{beanmembro.delete}" onclick="return confirm('Deseja realmente deletar o cliente e todos os seus pedidos?')" >
+							<h:graphicImage library="img" name="excluir.png" style="border:0"/>
+							<f:setPropertyActionListener target="#{beanmembro.membro}" value="#{membro}" />
+						</h:commandLink>
+					</p:column>
+				</p:dataTable>
+		</h:form>
+			<!-- Fim PanelGrid e datatable -->
+	
+
+        
+        </ui:define>
+        
+</ui:decorate>
+</html>
