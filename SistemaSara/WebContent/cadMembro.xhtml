@@ -19,7 +19,9 @@
 					<h:outputLabel value="Nome:" />
 					<h:inputText value="#{beanmembro.membro.nome}" required="true" autocomplete="off" requiredMessage="NOME Obrigatório!"/>
 					<h:outputLabel value="Email:" />
-					<h:inputText value="#{beanmembro.membro.email}" type="email" />
+					<h:inputText value="#{beanmembro.membro.email}" required="true" label="Email" validatorMessage="E-mail incorreto!">
+						<f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+					</h:inputText>
 					<h:outputLabel value="CPF:" />
 					<h:inputText styleClass="cpf" value="#{beanmembro.membro.cpf}" maxlength="14" autocomplete="off" required="true" requiredMessage="CPF Obrigatório!"/>
 					<h:outputLabel value="Endereco:" />

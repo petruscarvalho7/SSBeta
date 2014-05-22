@@ -11,7 +11,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
-import org.hibernate.criterion.Restrictions;
 import org.primefaces.event.SelectEvent;
 
 import br.com.sara.entidade.Constantes;
@@ -133,6 +132,7 @@ public class MembroBean implements Serializable{
 		if(membro.getObjref()!=0){
 			try{
 				dao.update(membro);
+				novo();
 				fc.addMessage("cadMembro", new FacesMessage("Membro Salvo com sucesso!!!"));
 				membro = new Membro();
 				membroList = dao.findAll();
@@ -148,6 +148,7 @@ public class MembroBean implements Serializable{
 		
 		try{
 			dao.create(membro);
+			novo();
 			fc.addMessage("cadMembro", new FacesMessage("Membro Salvo com sucesso!!!"));
 			membro = new Membro();
 			membroList = dao.findAll();
@@ -157,11 +158,9 @@ public class MembroBean implements Serializable{
 			fc.addMessage(null, ms);
 		}
 		
-		
 		return null;
 	}
 	
-	@SuppressWarnings("unchecked")
 	public String delete(){
 		FacesContext fc = FacesContext.getCurrentInstance();
 		try{
