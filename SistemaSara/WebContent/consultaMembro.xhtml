@@ -39,7 +39,9 @@
 					<h:outputText value="#{membro.nome}"/>
 					</p:column>
 					<p:column headerText="Data Nascimento">
-					<h:outputText value="#{membro.dataNascimento}"/>
+					<h:outputText value="#{membro.dataNascimento}">
+						<f:convertDateTime pattern="dd/MM/yyyy"/>
+					</h:outputText>
 					</p:column>
 					<p:column headerText="CPF">
 					<h:outputText value="#{membro.cpf}"/>

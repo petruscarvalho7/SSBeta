@@ -1,7 +1,13 @@
 package br.com.sara.entidade;
 
-public class Constantes {
+import java.io.Serializable;
 
+public class Constantes implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public static class Discipulador
 	{	
 	

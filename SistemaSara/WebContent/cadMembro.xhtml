@@ -27,7 +27,7 @@
 					<h:outputLabel value="Telefone:" />
 					<h:inputText value="#{beanmembro.membro.telefone}" autocomplete="off" />
 					<h:outputLabel value="Data nascimento:" />
-       				<p:calendar value="#{beanmembro.membro.dataNascimento}" locale="de" navigator="true" pattern="dd-MM-yyyy" />
+       				<p:calendar value="#{beanmembro.membro.dataNascimento}" locale="pt" navigator="true" pattern="dd-MM-yyyy"/>
        				<h:outputLabel value="Discipulador:" />
 					<h:selectOneMenu value="#{beanmembro.discipulador}" required="true" requiredMessage="Escolha o Discipulador" >
       					<f:selectItems value="#{beanmembro.constantes.discipuladores}" var="discipulador" itemLabel="#{discipulador.nome}" itemValue="#{discipulador.nome}"/>
