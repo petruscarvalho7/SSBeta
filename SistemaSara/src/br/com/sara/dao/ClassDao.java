@@ -1,7 +1,7 @@
 package br.com.sara.dao;
 
+import java.io.Serializable;
 import java.util.List;
-
 
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
@@ -10,8 +10,12 @@ import org.hibernate.Session;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
-public class ClassDao<T> implements IDao<T>{
+public class ClassDao<T> implements IDao<T>, Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Class<T> entity;
 	private Session session;
 	
